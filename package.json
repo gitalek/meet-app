@@ -1,5 +1,5 @@
 {
-  "name": "custom_ror",
+  "name": "meet_app",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
