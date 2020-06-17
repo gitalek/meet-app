@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: pro
+  password:
+
+development:
+  <<: *default
+  database: meetapp_development
+
+test:
+  <<: *default
+  database: meetapp_test
+
+production:
+  <<: *default
+  database: meetapp
