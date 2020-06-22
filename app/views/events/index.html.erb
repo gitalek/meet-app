@@ -1,11 +1,7 @@
 <h1>Events</h1>
 
-<table>
-  <%# <tr> %>
-  <%#   <th>Title</th> %>
-  <%#   <th>Level</th> %>
-  <%#   <th colspan="4">Actions</th> %>
-  <%# </tr> %>
-
+<div class="main">
   <%= render @events %>
-</table>
+</div>
+
+<%= paginate @events %>
