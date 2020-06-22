@@ -1,0 +1,11 @@
+<h3><%= event.title %></h3>
+<p><%= event.description %></p>
+<p><i><%= event.location %>. Начало: <%= event.start_time %></i></p>
+<p>
+  <%= link_to 'Show', event %> |
+  <%= link_to 'Edit', edit_event_path(event) %> |
+  <%= link_to 'Delete',
+      event,
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+</p>
