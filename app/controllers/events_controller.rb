@@ -15,8 +15,9 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to @event
+      redirect_to @event, notice: 'Event was created!'
     else
+      flash.now[:error] = 'Something went wrong... Try again'
       render :new
     end
   end
@@ -25,16 +26,16 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to @event
+      redirect_to @event, notice: 'Successfully updated!'
     else
+      # [!?] Duplicate
+      flash.now[:error] = 'Something went wrong... Try again'
       render :edit
     end
-
   end
 
   def destroy
     @event.destroy
-    byebug
     redirect_to events_path
   end
 
@@ -46,9 +47,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-      .permit(
-        :title, :description, :location, :start_time,
-        :end_time, :organizer_email, :organizer_telegram, :link,
-      )
+          .permit(
+            :title, :description, :location, :start_time,
+            :end_time, :organizer_email, :organizer_telegram, :link
+          )
   end
 end
