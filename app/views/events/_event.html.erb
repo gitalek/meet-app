@@ -4,7 +4,7 @@
 <p>
   <%= link_to 'Show', event %> |
   <%= link_to 'Edit', edit_event_path(event) %> |
-  <%= link_to 'Delete',
+  <%= button_to 'Delete',
       event,
       method: :delete,
       data: { confirm: 'Are you sure?' } %>

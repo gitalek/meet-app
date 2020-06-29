@@ -1,4 +1,3 @@
-
 <div class="event">
   <h1><%= @event.title %></h1>
   <p><%= @event.description %></div>
@@ -15,6 +14,9 @@
 
   <nav>
     <%= link_to 'Back To Events', events_path %> |
-    <%= link_to 'Edit Event', edit_event_path(@event) %>
+    <%= link_to 'Edit Event', edit_event_path(@event) %> |
+    <%= button_to 'Delete',
+                @event,
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
   </nav>
-<div>
