@@ -1,37 +1,11 @@
-<%= form_with model: @event, local: true do |form| %>
-  <p>
-    <%= form.label :title %></br>
-    <%= form.text_field :title %></br>
-  </p>
-  <p>
-    <%= form.label :description %></br>
-    <%= form.text_field :description %></br>
-  </p>
-  <p>
-    <%= form.label :location %></br>
-    <%= form.text_field :location %></br>
-  </p>
-  <p>
-    <%= form.label :start_time %></br>
-    <%= form.text_field :start_time %></br>
-  </p>
-  <p>
-    <%= form.label :end_time %></br>
-    <%= form.text_field :end_time %></br>
-  </p>
-  <p>
-    <%= form.label :organizer_email %></br>
-    <%= form.text_field :organizer_email %></br>
-  </p>
-  <p>
-    <%= form.label :organizer_telegram %></br>
-    <%= form.text_field :organizer_telegram %></br>
-  </p>
-  <p>
-    <%= form.label :link %></br>
-    <%= form.text_field :link %></br>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+<%= simple_form_for @event, local: true do |form| %>
+    <%= form.input :title %>
+    <%= form.input :description %>
+    <%= form.input :location %>
+    <%= form.input :start_time %>
+    <%= form.input :end_time %>
+    <%= form.input :organizer_email %>
+    <%= form.input :organizer_telegram %>
+    <%= form.input :link %>
+    <%= form.button :submit %>
 <% end %>
