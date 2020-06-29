@@ -15,9 +15,10 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to @event, notice: 'Event was created!'
+      # redirect_to @event, notice: 'Event was created!'
+      redirect_to @event, notice: (t 'notice.create')
     else
-      flash.now[:error] = 'Something went wrong... Try again'
+      flash.now[:error] = t 'flash.error_on_create'
       render :new
     end
   end
@@ -26,10 +27,12 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to @event, notice: 'Successfully updated!'
+      # redirect_to @event, notice: 'Successfully updated!'
+      redirect_to @event, notice: (t 'notice.update')
     else
       # [!?] Duplicate
-      flash.now[:error] = 'Something went wrong... Try again'
+      # flash.now[:error] = 'Something went wrong... Try again'
+      flash.now[:error] = t 'flash.error_on_update'
       render :edit
     end
   end

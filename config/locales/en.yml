@@ -40,3 +40,9 @@ en:
   back_to_events: 'Back to Events'
   events_list_header: 'Events'
   edit_event_model: 'Edit event'
+  notice:
+    create: 'Event was created!'
+    update: 'Successfully updated!'
+  flash:
+    error_on_create: 'Something went wrong... Try again'
+    error_on_update: 'Something went wrong... Try again'

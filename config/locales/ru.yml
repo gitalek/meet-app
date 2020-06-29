@@ -9,6 +9,12 @@ ru:
   back_to_events: 'К списку событий'
   events_list_header: 'События'
   edit_event_model: 'Редактировать событие'
+  notice:
+    create: 'Событие создано!'
+    update: 'Событие изменено!'
+  flash:
+    error_on_create: 'Что-то пошло не так... Попробуйте ещё раз'
+    error_on_update: 'Что-то пошло не так... Попробуйте ещё раз'
 
   # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/ru.yml
   activerecord:
