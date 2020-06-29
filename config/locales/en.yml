@@ -30,4 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+  show: 'Show'
+  edit: 'Edit'
+  delete: 'Delete'
+  are_you_sure_?: 'Are you sure?'
+  back: 'Back'
+  create_event: 'Create event'
+  back_to_events: 'Back to Events'
+  events_list_header: 'Events'

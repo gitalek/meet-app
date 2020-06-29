@@ -13,10 +13,11 @@
   </div>
 
   <nav>
-    <%= link_to 'Back To Events', events_path %> |
-    <%= link_to 'Edit Event', edit_event_path(@event) %> |
-    <%= button_to 'Delete',
+    <%= link_to (t :back_to_events), events_path %> |
+    <%= link_to (t :edit), edit_event_path(@event) %> |
+<!-- !? :delete key -- :delete method-->
+    <%= button_to (t :delete),
                 @event,
                 method: :delete,
-                data: { confirm: 'Are you sure?' } %>
+                data: { confirm: (t :are_you_sure_?) } %>
   </nav>
