@@ -9,7 +9,17 @@ en:
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Please review the problems below:"
+    default_message: "Please review the problems below:"
+    labels:
+     defaults:
+       title: 'Title'
+       description: 'Description'
+       location: 'Location'
+       start_time: 'Start time'
+       end_time: 'End time'
+       organizer_email: 'Organizer email'
+       organizer_telegram: 'Organizer telegram'
+       link: 'Link'
     # Examples
     # labels:
     #   defaults:

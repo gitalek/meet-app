@@ -8,6 +8,7 @@ ru:
   create_event: 'Создать событие'
   back_to_events: 'К списку событий'
   events_list_header: 'События'
+  edit_event_model: 'Редактировать событие'
 
   # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/ru.yml
   activerecord:
