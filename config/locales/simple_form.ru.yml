@@ -1,0 +1,22 @@
+ru:
+  simple_form:
+    "yes": 'Да'
+    "no": 'Нет'
+    required:
+      text: 'обязательное поле'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+    default_message: "Please review the problems below:"
+    labels:
+     defaults:
+       title: 'Заголовок'
+       description: 'Описание'
+       location: 'Место'
+       start_time: 'Начало'
+       end_time: 'Конец'
+       organizer_email: 'Email организатора'
+       organizer_telegram: 'Telegram'
+       link: 'Ссылка'

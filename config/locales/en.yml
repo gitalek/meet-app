@@ -30,4 +30,24 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+  show: 'Show'
+  edit: 'Edit'
+  delete: 'Delete'
+  are_you_sure_?: 'Are you sure?'
+  back: 'Back'
+  create_event: 'Create event'
+  back_to_events: 'Back to Events'
+  events_list_header: 'Events'
+  edit_event_model: 'Edit event'
+  notice:
+    create: 'Event was created!'
+    update: 'Successfully updated!'
+  flash:
+    error_on_create: 'Something went wrong... Try again'
+    error_on_update: 'Something went wrong... Try again'
+  form:
+    event:
+      show:
+        start_time: 'Start time'
+        end_time: 'End time'

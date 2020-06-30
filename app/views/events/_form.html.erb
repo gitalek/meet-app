@@ -1,0 +1,11 @@
+<%= simple_form_for @event, local: true do |form| %>
+    <%= form.input :title %>
+    <%= form.input :description %>
+    <%= form.input :location %>
+    <%= form.input :start_time %>
+    <%= form.input :end_time %>
+    <%= form.input :organizer_email %>
+    <%= form.input :organizer_telegram %>
+    <%= form.input :link %>
+    <%= form.button :submit %>
+<% end %>

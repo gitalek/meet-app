@@ -1,0 +1,22 @@
+<div class="event">
+  <h1><%= @event.title %></h1>
+  <p><%= @event.description %></div>
+  <div class="coordinates">
+    <p><%= @event.location %></p>
+    <p><%= "#{t('form.event.show.start_time')}: #{@event.start_time}" %></p>
+    <p><%= "#{t('form.event.show.end_time')}: #{@event.end_time}" %></p>
+  </div>
+  <div class="contacts">
+    <p><%= @event.organizer_email %></p>
+    <p><%= @event.organizer_telegram %></p>
+    <p><%= @event.link %></p>
+  </div>
+
+  <nav>
+    <%= link_to t(:back_to_events), events_path %> |
+    <%= link_to t(:edit), edit_event_path(@event) %> |
+    <%= button_to t(:delete),
+                @event,
+                method: :delete,
+                data: { confirm: t(:are_you_sure_?) } %>
+  </nav>
