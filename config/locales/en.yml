@@ -46,3 +46,8 @@ en:
   flash:
     error_on_create: 'Something went wrong... Try again'
     error_on_update: 'Something went wrong... Try again'
+  form:
+    event:
+      show:
+        start_time: 'Start time'
+        end_time: 'End time'

@@ -15,6 +15,11 @@ ru:
   flash:
     error_on_create: 'Что-то пошло не так... Попробуйте ещё раз'
     error_on_update: 'Что-то пошло не так... Попробуйте ещё раз'
+  form:
+    event:
+      show:
+        start_time: 'Начало'
+        end_time: 'Конец'
 
   # https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/ru.yml
   activerecord:

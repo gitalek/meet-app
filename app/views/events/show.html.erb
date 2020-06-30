@@ -3,8 +3,8 @@
   <p><%= @event.description %></div>
   <div class="coordinates">
     <p><%= @event.location %></p>
-    <p>Начало: <%= @event.start_time %></p>
-    <p>Конец: <%= @event.end_time %></p>
+    <p><%= "#{t('form.event.show.start_time')}: #{@event.start_time}" %></p>
+    <p><%= "#{t('form.event.show.end_time')}: #{@event.end_time}" %></p>
   </div>
   <div class="contacts">
     <p><%= @event.organizer_email %></p>
@@ -13,11 +13,10 @@
   </div>
 
   <nav>
-    <%= link_to (t :back_to_events), events_path %> |
-    <%= link_to (t :edit), edit_event_path(@event) %> |
-<!-- !? :delete key -- :delete method-->
-    <%= button_to (t :delete),
+    <%= link_to t(:back_to_events), events_path %> |
+    <%= link_to t(:edit), edit_event_path(@event) %> |
+    <%= button_to t(:delete),
                 @event,
                 method: :delete,
-                data: { confirm: (t :are_you_sure_?) } %>
+                data: { confirm: t(:are_you_sure_?) } %>
   </nav>
