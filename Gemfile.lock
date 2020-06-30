@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 49feb023d93670f521ec5aee90004c2e4aa62c2f
+  branch: master
+  specs:
+    faker (2.13.0)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,6 +75,11 @@ GEM
     diff-lcs (1.3)
     erubi (1.9.0)
     execjs (2.7.0)
+    factory_bot (6.0.2)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.0.0)
+      factory_bot (~> 6.0.0)
+      railties (>= 5.0.0)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -134,6 +147,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 6.0.3.1)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -228,12 +245,15 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  factory_bot_rails
+  faker!
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.2)
   pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.1)
+  rails-controller-testing
   rspec-rails (~> 4.0)
   sass-rails (>= 6)
   shoulda-matchers (~> 4.0)
