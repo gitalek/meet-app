@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
@@ -15,18 +17,47 @@ RSpec.describe EventsController, type: :controller do
       }
     }
     is_expected.to permit(
-        :title, :description, :location, :start_time,
-        :end_time, :organizer_email, :organizer_telegram, :link,
-      ).
-      for(:create, params: params).
-      on(:event)
+      :title, :description, :location, :start_time,
+      :end_time, :organizer_email, :organizer_telegram, :link
+    )
+      .for(:create, params: params)
+      .on(:event)
   end
 
-  # describe 'GET #show' do
-  #   before { get :show }
-  #   it { is_expected.to render_template('show') }
-  # end
+  describe 'GET #new' do
+    before { get :new }
+    it { is_expected.to render_template :new }
+    it 'returns success status' do
+      expect(response.status).to eq 200
+    end
+  end
 
-  # it { is_expected.to route(:get, '/events').to(action: :index) }
-  # it { is_expected.to route(:get, '/events/1').to(action: :show, id: 1) }
+  describe 'GET #show' do
+    let(:event) { create :event }
+    before { get :show, params: { id: event.id } }
+
+    it { is_expected.to render_template :show }
+    it 'returns success status' do
+      expect(response.status).to eq 200
+    end
+  end
+
+  describe 'GET #edit' do
+    let(:event) { create :event }
+    before { get :edit, params: { id: event.id } }
+
+    it { is_expected.to render_template :edit }
+    it 'returns success status' do
+      expect(response.status).to eq 200
+    end
+  end
+
+  describe 'GET #index' do
+    before { get :index }
+
+    it { is_expected.to render_template :index }
+    it 'returns success status' do
+      expect(response.status).to eq 200
+    end
+  end
 end
