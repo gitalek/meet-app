@@ -36,11 +36,6 @@ RSpec.describe EventsController, type: :controller do
     let(:event) { create :event }
     before { get :show, params: { id: event.id } }
 
-    it do
-      is_expected
-        .to route(:get, "/events/#{event.id}")
-        .to(action: :show, id: event.id)
-    end
     it { is_expected.to render_template :show }
     it 'returns success status' do
       expect(response.status).to eq 200
@@ -51,11 +46,6 @@ RSpec.describe EventsController, type: :controller do
     let(:event) { create :event }
     before { get :edit, params: { id: event.id } }
 
-    it do
-      is_expected
-        .to route(:get, "/events/#{event.id}/edit")
-        .to(action: :edit, id: event.id)
-    end
     it { is_expected.to render_template :edit }
     it 'returns success status' do
       expect(response.status).to eq 200
@@ -65,8 +55,6 @@ RSpec.describe EventsController, type: :controller do
   describe 'GET #index' do
     before { get :index }
 
-    # ?! почему не работает вариант с '/events'
-    it { is_expected.to route(:get, '/').to(action: :index) }
     it { is_expected.to render_template :index }
     it 'returns success status' do
       expect(response.status).to eq 200
