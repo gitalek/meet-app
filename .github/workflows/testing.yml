@@ -38,9 +38,10 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
       - name: Cache project dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: vendor/bundle
+#          path: vendor/bundle
+          path: vendor/
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
