@@ -61,16 +61,7 @@ jobs:
       - name: Set up db
         env:
           RAILS_ENV: test
-#          POSTGRES_HOST: 127.0.0.1
-#          POSTGRES_PORT: 5432
-#          PGHOST: localhost
         run: |
-          echo '****************'
-          echo ${RAILS_ENV}
-          echo ${POSTGRES_HOST}
-          echo ${POSTGRES_PORT}
-          pg_isready -h localhost -p 5432
-          echo '****************'
           bundle exec rails db:setup
       - name: Run tests
         env:

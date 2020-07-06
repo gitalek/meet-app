@@ -5,4 +5,4 @@ run:
 	rails s
 
 test:
-	bundle exec rspec
+	bundle exec rspec -e test
