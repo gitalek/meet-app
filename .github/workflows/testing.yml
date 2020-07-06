@@ -40,20 +40,14 @@ jobs:
       - name: Cache project dependencies
         uses: actions/cache@v2
         with:
-#          path: vendor/bundle
-          path: vendor/
+          path: vendor/bundle
+#          path: vendor/
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Install PostgreSQL client
         run: |
           sudo apt-get -yqq install libpq-dev
-      - name: Check if postgres is ready
-        run: |
-          echo '****************'
-          pg_isready -h localhost -p 5432
-          whoami
-          echo '****************'
       - name: Install project dependencies
         run: |
           gem install bundler
