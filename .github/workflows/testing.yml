@@ -9,6 +9,10 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
+    
+    env:
+      POSTGRES_USER: pro
+      POSTGRES_DB: meetapp_test
 
     strategy:
       matrix:
