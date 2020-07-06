@@ -46,15 +46,15 @@ jobs:
       - name: Install PostgreSQL 11 client
         run: |
           sudo apt-get -yqq install libpq-dev
-      - name: Install project dependencies
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-      - name: Install PostgreSQL 11 client
+      - name: Check if postgres is ready
         run: |
           echo '****************'
           pg_isready -h localhost -p 5432
           echo '****************'
+      - name: Install project dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
       - name: Set up db
         env:
           RAILS_ENV: test
