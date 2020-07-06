@@ -54,15 +54,16 @@ jobs:
           pg_isready -h localhost -p 5432
           whoami
           echo '****************'
-#      - name: Install project dependencies
-#        run: |
-#          gem install bundler
-#          bundle install --path='vendor/bundle' --jobs 4 --retry 3
+      - name: Install project dependencies
+        run: |
+          gem install bundler
+          bundle install --path='vendor/bundle' --jobs 4 --retry 3
       - name: Set up db
         env:
           RAILS_ENV: test
           POSTGRES_HOST: 127.0.0.1
           POSTGRES_PORT: 5432
+          PGHOST: localhost
         run: |
           echo '****************'
           echo ${RAILS_ENV}
@@ -70,8 +71,8 @@ jobs:
           echo ${POSTGRES_PORT}
           pg_isready -h localhost -p 5432
           echo '****************'
-          PGHOST=localhost createuser postgres
-          PGHOST=localhost createdb --owner=postgres meetapp_test
+#          PGHOST=localhost createuser postgres
+#          PGHOST=localhost createdb --owner=postgres meetapp_test
           bundle exec rails db:setup
 #      - name: Run tests
 #        env:
