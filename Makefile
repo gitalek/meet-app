@@ -5,4 +5,4 @@ run:
 	rails s
 
 test:
-	bundle exec rspec -e test
+	RAilS_ENV=test bundle exec rspec
