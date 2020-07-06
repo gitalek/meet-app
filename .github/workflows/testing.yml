@@ -23,19 +23,20 @@ jobs:
       db:
         image: postgres
         env:
-#          POSTGRES_USER: pro
-#          POSTGRES_DB: meetapp_test
           POSTGRES_PASSWORD: postgres
-        ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
       - name: Checkout master
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
       - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: actions/setup-ruby@v1
         with:
@@ -51,7 +52,7 @@ jobs:
         env:
           RAILS_ENV: test
           POSTGRES_HOST: postgres
-          POSTGRES_PORT: 5555
+          POSTGRES_PORT: 5432
         run: |
           bundle exec rails db:setup
       - name: Run tests
