@@ -64,7 +64,5 @@ jobs:
         run: |
           bundle exec rails db:setup
       - name: Run tests
-        env:
-          RAILS_ENV: test
         run: |
           make test
