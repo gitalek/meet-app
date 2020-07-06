@@ -19,7 +19,6 @@ jobs:
         image: postgres:12.2
         env:
           POSTGRES_USER: pro
-          POSTGRES_PASSWORD:
           POSTGRES_DB: meetapp_test
         ports: ['5432:5432']
         options: >-
