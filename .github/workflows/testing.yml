@@ -70,8 +70,8 @@ jobs:
           echo ${POSTGRES_PORT}
           pg_isready -h localhost -p 5432
           echo '****************'
-          createuser postgres
-          createdb --owner=postgres meetapp_test
+          PGHOST=localhost createuser postgres
+          PGHOST=localhost createdb --owner=postgres meetapp_test
           bundle exec rails db:setup
 #      - name: Run tests
 #        env:

@@ -15,7 +15,6 @@ test:
   database: meetapp_test
   username: postgres
   password: postgres
-  host: localhost
 
 production:
   <<: *default
