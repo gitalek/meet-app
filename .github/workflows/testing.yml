@@ -53,7 +53,7 @@ jobs:
       - name: Install PostgreSQL 11 client
         run: |
           echo '****************'
-          pg_isready
+          pg_isready -h localhost -p 5432
           echo '****************'
       - name: Set up db
         env:
