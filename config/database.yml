@@ -4,7 +4,6 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   username: pro
-  password:
   host: 127.0.0.1
 
 development:
@@ -14,8 +13,6 @@ development:
 test:
   <<: *default
   database: meetapp_test
-  username: postgres
-  password: postgres
 
 production:
   <<: *default
