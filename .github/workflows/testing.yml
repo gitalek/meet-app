@@ -54,14 +54,14 @@ jobs:
           pg_isready -h localhost -p 5432
           whoami
           echo '****************'
-      - name: Install project dependencies
-        run: |
-          gem install bundler
-          bundle install --path='vendor/bundle' --jobs 4 --retry 3
+#      - name: Install project dependencies
+#        run: |
+#          gem install bundler
+#          bundle install --path='vendor/bundle' --jobs 4 --retry 3
       - name: Set up db
         env:
           RAILS_ENV: test
-          POSTGRES_HOST: localhost
+          POSTGRES_HOST: 127.0.0.1
           POSTGRES_PORT: 5432
         run: |
           echo '****************'
