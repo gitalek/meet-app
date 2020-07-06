@@ -69,7 +69,8 @@ jobs:
           echo ${POSTGRES_HOST}
           echo ${POSTGRES_PORT}
           echo '****************'
-          createdb meetapp_test --owner=postgres
+          createuser postgres
+          createdb --owner=postgres meetapp_test
           bundle exec rails db:setup
 #      - name: Run tests
 #        env:
