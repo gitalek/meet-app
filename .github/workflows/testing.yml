@@ -74,8 +74,8 @@ jobs:
 #          PGHOST=localhost createuser postgres
 #          PGHOST=localhost createdb --owner=postgres meetapp_test
           bundle exec rails db:setup
-#      - name: Run tests
-#        env:
-#          RAILS_ENV: test
-#        run: |
-#          make test
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+        run: |
+          make test
