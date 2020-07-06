@@ -68,6 +68,7 @@ jobs:
           echo ${RAILS_ENV}
           echo ${POSTGRES_HOST}
           echo ${POSTGRES_PORT}
+          pg_isready -h localhost -p 5432
           echo '****************'
           createuser postgres
           createdb --owner=postgres meetapp_test
