@@ -5,6 +5,7 @@ default: &default
   timeout: 5000
   username: pro
   password:
+  host: 127.0.0.1
 
 development:
   <<: *default
