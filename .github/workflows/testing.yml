@@ -9,7 +9,7 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
-    
+
     env:
       POSTGRES_USER: pro
       POSTGRES_DB: meetapp_test
@@ -20,10 +20,11 @@ jobs:
 
     services:
       db:
-        image: postgres:12.2
+        image: postgres
         env:
-          POSTGRES_USER: pro
-          POSTGRES_DB: meetapp_test
+#          POSTGRES_USER: pro
+#          POSTGRES_DB: meetapp_test
+          POSTGRES_PASSWORD: postgres
         ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
