@@ -1,0 +1,46 @@
+name: Testing
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby-version: [2.7.1]
+
+    services:
+      db:
+        image: postgres:11
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@master
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Install PostgreSQL 11 client
+        run: |
+          sudo apt-get -yqq install libpq-dev
+      - name: Install project dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: Set up db
+        run: |
+          bundle exec rails db:setup
+      - name: Run tests
+        run: |
+          make test
