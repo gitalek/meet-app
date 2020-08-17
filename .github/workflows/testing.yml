@@ -68,7 +68,8 @@ jobs:
           chmod +x ./cc-test-reporter
           ./cc-test-reporter before-build
           make test
-          ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+          ./cc-test-reporter after-build
+#          ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 #      - name: Test & publish code coverage
 #        uses: paambaati/codeclimate-action@v2.6.0
 #        env:
