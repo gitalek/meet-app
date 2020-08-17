@@ -66,5 +66,5 @@ jobs:
           CC_TEST_REPORTER_ID: 0939808c34de14b578077b3d31fa568a5926785c8e6957cd3f9ec4795addc9d2
         with:
           coverageCommand: make test
-          coverageLocations: ${{github.workspace}}/coverage/index.html
+          coverageLocations: ${{github.workspace}}/coverage
           debug: true
