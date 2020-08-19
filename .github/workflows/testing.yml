@@ -60,15 +60,15 @@ jobs:
       - name: Run tests
         run: |
           make test
-      - name: Run tests & publish code coverage
-        env:
-          CC_TEST_REPORTER_ID: 0939808c34de14b578077b3d31fa568a5926785c8e6957cd3f9ec4795addc9d2
-        run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter before-build
-          make test
-          ./cc-test-reporter after-build
+#      - name: Run tests & publish code coverage
+#        env:
+#          CC_TEST_REPORTER_ID: 0939808c34de14b578077b3d31fa568a5926785c8e6957cd3f9ec4795addc9d2
+#        run: |
+#          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#          chmod +x ./cc-test-reporter
+#          ./cc-test-reporter before-build
+#          make test
+#          ./cc-test-reporter after-build
 #          ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 #      - name: Test & publish code coverage
 #        uses: paambaati/codeclimate-action@v2.6.0
