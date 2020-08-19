@@ -19,6 +19,7 @@ gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
@@ -27,6 +28,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'simplecov', require: false
 end
 
 group :development do

@@ -1,0 +1,80 @@
+name: Testing
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby-version: [2.7.1]
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: pro
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Cache project dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get -yqq install libpq-dev
+      - name: Install project dependencies
+        run: |
+          gem install bundler
+          bundle install --path='vendor/bundle' --jobs 4 --retry 3
+      - name: Setup DB
+        env:
+          RAILS_ENV: test
+          POSTGRES_PASSWORD: postgres
+        run: |
+          bundle exec rails db:setup
+      - name: Run tests
+        run: |
+          make test
+#      - name: Run tests & publish code coverage
+#        env:
+#          CC_TEST_REPORTER_ID: 0939808c34de14b578077b3d31fa568a5926785c8e6957cd3f9ec4795addc9d2
+#        run: |
+#          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#          chmod +x ./cc-test-reporter
+#          ./cc-test-reporter before-build
+#          make test
+#          ./cc-test-reporter after-build
+#          ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+#      - name: Test & publish code coverage
+#        uses: paambaati/codeclimate-action@v2.6.0
+#        env:
+#          CC_TEST_REPORTER_ID: 0939808c34de14b578077b3d31fa568a5926785c8e6957cd3f9ec4795addc9d2
+#        with:
+#          coverageCommand: make test
+#          coverageLocations: ${{github.workspace}}/coverage
+#          debug: true

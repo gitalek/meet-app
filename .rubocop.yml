@@ -1,0 +1,18 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake}'
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'node_modules/**/*'
+    - 'bin/**/*'
+    - Gemfile
+    - config.ru
+    - Rakefile
+    - 'spec/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
