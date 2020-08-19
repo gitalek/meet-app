@@ -63,4 +63,6 @@ Rails.application.configure do
   # ?! custom
   config.hosts << 'ru.meetapp.local'
   config.hosts << 'en.meetapp.local'
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
