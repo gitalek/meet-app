@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  belongs_to :user
+
   MAX_TITLE_LEN = 75
 
   validates :description, :location, presence: true
