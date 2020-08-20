@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
   #     u.permit(:password, :password_confirmation, :current_password)
   #   end
   # end
+
+  # def after_sign_out_path_for(resource_or_scope)
+    # print(resource_or_scope)
+    # byebug
+    # root_path
+  # end
 end

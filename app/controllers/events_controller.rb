@@ -1,18 +1,20 @@
 class EventsController < ApplicationController
-  before_action :find_event, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[show index]
+  before_action :find_event, only: %i[show]
+  before_action :find_logged_in_user_event, only: %i[edit update destroy]
 
   def index
-    @events = Event.order(start_time: :desc).page(params[:page])
+    @events = Event.order(start_time: :asc).page(params[:page])
   end
 
   def show; end
 
   def new
-    @event = Event.new
+    @event = current_user.events.build
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
 
     if @event.save
       redirect_to @event, notice: t('notice.create')
@@ -43,6 +45,10 @@ class EventsController < ApplicationController
 
   def find_event
     @event = Event.find(params[:id])
+  end
+
+  def find_logged_in_user_event
+    @event = current_user.events.find(params[:id])
   end
 
   def event_params

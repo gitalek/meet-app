@@ -38,14 +38,16 @@
   </head>
   <body>
     <header>
-      <%= link_to 'MeetApp', events_path %>
+      <%= link_to 'MeetApp', events_path %> |
       <% if user_signed_in? %>
-          <%#= link_to 'Профиль', current_user, method: :delete %>
-          <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+        <%= link_to 'Создать событие', new_event_path %> |
+        <%= link_to "#{current_user.username}", current_user %> |
+        <%#= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+        <%= button_to 'Выйти_кнопка', destroy_user_session_path, method: :delete %>
       <% else %>
-          <%= link_to 'Войти', new_user_session_path %>
+          <%= link_to 'Войти', new_user_session_path %> |
           <%= link_to 'Зарегистрироваться', new_user_registration_path %>
-        <% end %>
+      <% end %>
     </header>
 
     <%# <div class="navbar navbar-default navbar-static-top"> %>

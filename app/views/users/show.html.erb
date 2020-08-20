@@ -1,0 +1,9 @@
+<h1>username</h1>
+<p><%= @user.username %></p>
+<h1>email</h1>
+<p><%= @user.email %></p>
+
+<nav>
+  <%= link_to t(:edit), edit_user_path(@user) %> |
+  <%= link_to t(:change_password), edit_user_registration_path(@user) %>
+</nav>
