@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
+  let(:event) { create :event }
+
   it do
+    pending
     params = {
       event: {
         title: 'Party',
@@ -13,7 +16,7 @@ RSpec.describe EventsController, type: :controller do
         end_time: '2020-06-13 00:00:00 UTC',
         organizer_email: 'aoeu@aoue.oun',
         organizer_telegram: '@telega',
-        link: ''
+        link: '',
       }
     }
     is_expected.to permit(
@@ -24,40 +27,85 @@ RSpec.describe EventsController, type: :controller do
       .on(:event)
   end
 
-  describe 'GET #new' do
-    before { get :new }
-    it { is_expected.to render_template :new }
-    it 'returns success status' do
-      expect(response.status).to eq 200
+  context 'Member' do
+    let(:user) { create :user }
+    let(:event) { create :event, user: user }
+
+    before(:each) do
+      sign_in user
+    end
+
+    describe 'accessed to' do
+      it '#new' do
+        get :new
+        is_expected.to respond_with(200)
+      end
+
+      it '#edit' do
+        get :edit, params: { id: event.id }
+        expect(response.status).to eq(200)
+      end
+
+      it '#destroy' do
+        delete :destroy, params: { id: event.id }
+        is_expected.to respond_with(302)
+        expect(response).to redirect_to(events_path)
+      end
+    end
+
+    context 'not his own events' do
+      pending 'denied to' do
+        it 'edit' do
+          event = create(:event)
+          get :edit, params: { id: event.id }
+          expect {
+            get :edit, params: { id: event.id }
+          }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+
+        it 'destroy' do
+        end
+      end
     end
   end
 
-  describe 'GET #show' do
-    let(:event) { create :event }
-    before { get :show, params: { id: event.id } }
+  context 'Guest' do
+    describe 'kicked from' do
+      it '#new' do
+        get :new
+        expect(response.status).not_to eq(200)
+        expect(response.status).to eq(302)
+        expect(response).to redirect_to(new_user_session_path)
+        expect(flash[:alert]).to be
+      end
 
-    it { is_expected.to render_template :show }
-    it 'returns success status' do
-      expect(response.status).to eq 200
+      it '#edit' do
+        get :edit, params: { id: event.id }
+        expect(response.status).not_to eq(200)
+        expect(response.status).to eq(302)
+        expect(response).to redirect_to(new_user_session_path)
+        expect(flash[:alert]).to be
+      end
+
+      it '#destroy' do
+        delete :destroy, params: { id: event.id }
+        is_expected.not_to respond_with(200)
+        is_expected.to respond_with(302)
+        expect(response).to redirect_to(new_user_session_path)
+        expect(flash[:alert]).to be
+      end
     end
-  end
 
-  describe 'GET #edit' do
-    let(:event) { create :event }
-    before { get :edit, params: { id: event.id } }
+    describe 'accessed to' do
+      it '#index' do
+        get :index
+        is_expected.to respond_with(200)
+      end
 
-    it { is_expected.to render_template :edit }
-    it 'returns success status' do
-      expect(response.status).to eq 200
-    end
-  end
-
-  describe 'GET #index' do
-    before { get :index }
-
-    it { is_expected.to render_template :index }
-    it 'returns success status' do
-      expect(response.status).to eq 200
+      it '#show' do
+        get :show, params: { id: event.id }
+        is_expected.to respond_with(200)
+      end
     end
   end
 end

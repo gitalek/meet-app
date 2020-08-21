@@ -11,11 +11,9 @@ class User < ApplicationRecord
   private
 
   def set_new_user_random_username
-    print 'Before if'
     if username.blank?
       rand_name = "#{Faker::Creature::Animal.name}-#{Faker::Number.number(digits: 10)}"
       self.username = rand_name
-      print 'Into if'
     end
   end
 end

@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :event do
+    association :user
+
     title { Faker::Book.title }
     description { Faker::Quote.matz }
     location { Faker::Address.city }
