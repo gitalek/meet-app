@@ -9,6 +9,7 @@ ru:
   back_to_events: 'К списку событий'
   events_list_header: 'События'
   edit_event_model: 'Редактировать событие'
+  change_password: 'Сменить пароль'
   notice:
     create: 'Событие создано!'
     update: 'Событие изменено!'

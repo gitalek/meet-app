@@ -2,10 +2,12 @@
 <p><%= event.description %></p>
 <p><i><%= event.location %>. Начало: <%= event.start_time %></i></p>
 <p>
-  <%= link_to t(:show), event %> |
-  <%= link_to t(:edit), edit_event_path(event) %> |
-  <%= button_to t(:delete),
-      event,
-      method: :delete,
-      data: { confirm: t(:are_you_sure_?) } %>
+  <%= link_to t(:show), event %>
+  <% if user_signed_in? && current_user.events.include?(event) %>
+     | <%= link_to t(:edit), edit_event_path(event) %>
+     | <%= button_to t(:delete),
+                  event,
+                  method: :delete,
+                  data: { confirm: t(:are_you_sure_?) } %>
+  <% end %>
 </p>

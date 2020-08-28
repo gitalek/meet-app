@@ -16,6 +16,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'kaminari'
 gem "valid_email2"
 gem 'simple_form'
+gem 'devise'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -27,7 +29,6 @@ group :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'simplecov', require: false
 end
 
